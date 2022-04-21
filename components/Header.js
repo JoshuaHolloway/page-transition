@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link'
+import Link from 'next/link';
 import styled from 'styled-components';
 
+// ==============================================
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -15,30 +16,54 @@ const StyledHeader = styled.header`
   left: 0;
 `;
 
+// ==============================================
+
 const A = styled.a`
   padding: 20px;
   color: #000;
   text-decoration: none;
   cursor: pointer;
 
-  ${props => props.isActive && `
+  ${(props) =>
+    props.isActive &&
+    `
     text-decoration: underline;
   `};
 `;
 
-const Header = () => {
+// ==============================================
+
+const Header = ({ header_ref }) => {
+  // --------------------------------------------
+
   const { route, asPath } = useRouter();
+
+  // --------------------------------------------
+
   return (
-    <StyledHeader>
-      <Link href="/">
+    <header
+      ref={header_ref}
+      style={{
+        position: 'fixed',
+        zIndex: 9,
+        width: '100%',
+        // background: '#eee',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <Link href='/'>
         <A isActive={route === '/'}>Home</A>
       </Link>
-      <Link href="/about">
+      <Link href='/about'>
         <A isActive={route === '/about'}>About</A>
       </Link>
-    </StyledHeader>
+    </header>
   );
+
+  // --------------------------------------------
 };
 
+// ==============================================
 
 export default Header;

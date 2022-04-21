@@ -1,5 +1,8 @@
+// Libs:
 import styled from 'styled-components';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
+// ==============================================
 
 const duration = 1000;
 
@@ -41,7 +44,7 @@ const Wipe = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 1); /*#aaa; */
+  background: rgba(0, 0, 0, 1);
   z-index: 5;
 
   transform: translateY(100%);

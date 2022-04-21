@@ -1,9 +1,14 @@
-import React from 'react';
+// React / Next:
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+
+// Comps:
 import Header from '../components/Header';
 import PageTransisions from '../components/PageTransition';
 import GlobalStyle from '../styles/global-style';
 
-import { useRouter } from 'next/router';
+// Hooks:
+import { useNavScroll } from '../hooks/use-nav-scroll';
 
 // ==============================================
 
@@ -14,9 +19,16 @@ const MyApp = ({ Component, pageProps }) => {
 
   // --------------------------------------------
 
+  // -Header scroll animation:
+  const header_ref = useRef(null);
+
+  useNavScroll(header_ref);
+
+  // --------------------------------------------
+
   return (
     <>
-      <Header />
+      <Header header_ref={header_ref} />
       <PageTransisions route={router.asPath}>
         <Component {...pageProps} />
       </PageTransisions>
